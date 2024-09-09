@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5e0;
+            color: #333;
+        }
+        header {
+            background-color: #2e5339;
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 16px;
+        }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .cart-container {
+            padding: 20px;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 10px;
+        }
+        .cart-item-info {
+            flex-grow: 1;
+        }
+        .cart-item-info h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        .cart-item-info p {
+            margin: 5px 0;
+        }
+        .cart-summary {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .cart-summary p {
+            margin: 5px 0;
+        }
+        .checkout-btn {
+            background-color: #2e5339;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+        .payment-options {
+            margin-top: 20px;
+        }
+        .payment-options h2 {
+            margin-bottom: 10px;
+        }
+        .payment-option {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .payment-option input[type="radio"] {
+            margin-right: 10px;
+        }
+        .nav-links {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .cart-icon, .logout-icon {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Dropdown Menu for Categories -->
+        <div class="dropdown">
+            <span style="cursor: pointer; font-size: 18px; padding-right: 20px;">&#9776; Categories</span>
+            <div class="dropdown-content">
+                <a href="#vegetables">Vegetables</a>
+                <a href="#fruits">Fruits</a>
+                <a href="#meat">Meat</a>
+                <a href="#fish">Fish</a>
+                <a href="#dairy">Dairy</a>
+                <a href="#vegan">Vegan</a>
+            </div>
+        </div>
+        
+        <!-- Home Link -->
+        <div>
+            <a href="index.html" class="nav-links">Home</a>
+        </div>
+
+        <!-- Cart and Logout Links -->
+        <div>
+            <a href="cart.html" class="nav-links"><img src="images/cart.png" alt="Cart" class="cart-icon"> Cart</a>
+            <a href="login.html" class="nav-links"><img src="images/logout.png" alt="Logout" class="logout-icon"> Logout</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="cart-container">
+            <!-- Cart Items -->
+            <div class="cart-item">
+                <img src="images/product1.jpg" alt="Product 1">
+                <div class="cart-item-info">
+                    <h3>Product Name 1</h3>
+                    <p>Price: KSH 2,000.00</p>
+                    <p>Quantity: 1</p>
+                </div>
+                <button class="remove-btn">Remove</button>
+            </div>
+
+            <div class="cart-item">
+                <img src="images/product2.jpg" alt="Product 2">
+                <div class="cart-item-info">
+                    <h3>Product Name 2</h3>
+                    <p>Price: KSH 1,500.00</p>
+                    <p>Quantity: 2</p>
+                </div>
+                <button class="remove-btn">Remove</button>
+            </div>
+
+            <!-- Cart Summary -->
+            <div class="cart-summary">
+                <h2>Cart Summary</h2>
+                <p>Total Items: 3</p>
+                <p>Total Price: KSH 5,000.00</p>
+                <a href="#checkout" class="checkout-btn">Proceed to Checkout</a>
+            </div>
+        </div>
+
+        <!-- Payment Options -->
+        <div class="payment-options">
+            <h2>Select Payment Method</h2>
+            <div class="payment-option">
+                <input type="radio" id="mpesa" name="payment-method" value="mpesa">
+                <label for="mpesa">M-Pesa</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="debit-card" name="payment-method" value="debit-card">
+                <label for="debit-card">Debit Card</label>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
