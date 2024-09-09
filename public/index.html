@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer's Market</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Centaur:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="menu">
+                <li class="dropdown">
+                    <button class="dropdown-btn">&#9776;</button>
+                    <div class="dropdown-content">
+                        <a href="product-listing.html?category=vegetables">Vegetables</a>
+                        <a href="product-listing.html?category=fruits">Fruits</a>
+                        <a href="product-listing.html?category=meat">Meat</a>
+                        <a href="product-listing.html?category=fish">Fish</a>
+                        <a href="product-listing.html?category=dairy">Dairy</a>
+                        <a href="product-listing.html?category=vegan">Vegan</a>
+                    </div>
+                </li>
+                <li class="logo">
+                    <img src="images/logo.png" alt="Farmers Market Logo" />
+                    <span>FARMER'S MARKET</span>
+                </li>
+                <li class="right">
+                    <form action="product.html" method="get" class="search-form">
+                        <input type="text" placeholder="Search..." name="search">
+                        <button type="submit">&#128269;</button>
+                    </form>
+                    <a href="cart.html" class="cart-icon">&#128722;</a>
+                    <a href="login.html" class="register-btn">Register</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="intro" style=" background-image: url('images/market2.jpeg'); ">
+    <div class="intro-content">
+        <h1>Welcome to the Farmers Market!</h1>
+        <p>Your source for fresh, local produce directly from the farmers.</p>
+    </div>
+    <div class="log-in">
+        <a href="login.html" class="login-btn">Login/Register</a>
+    </div>
+</section>
+
+        
+        <section id="offers" class="section">
+            <h2>Special Offers</h2>
+            <div class="offer-list">
+                <div class="offer-item">
+                    <img src="images/vegetables.jpeg" alt="Offer 1">
+                    <h3>Fresh Vegetables</h3>
+                    <p>Get the best vegetables from local farms.</p>
+                </div>
+                <div class="offer-item">
+                    <img src="images/fruits.jpg" alt="Offer 2">
+                    <h3>Organic Fruits</h3>
+                    <p>Sweet and organic fruits just for you.</p>
+                </div>
+                <div class="offer-item">
+                    <img src="images/meat.jpg" alt="Offer 3">
+                    <h3>Fresh Meat Products</h3>
+                    <p>Organic meat products from local farmers.</p>
+                </div>
+            </div>
+            <div class="view-more">
+                <a href="product-listing.html" class="view-more-link">View More Offers</a>
+            </div>
+        </section>
+
+        <section id="reviews" class="section">
+            <h2>Customer Reviews</h2>
+            <div class="review-list">
+                <div class="review-item">
+                    <img src="images/john.jpeg" alt="Review 1">
+                    <h3>John Otieno</h3>
+                    <p>Great quality products and friendly service!</p>
+                </div>
+                <div class="review-item">
+                    <img src="images/mike.jpeg" alt="Review 2">
+                    <h3>Mike Muriithi</h3>
+                    <p>My go-to place for fresh produce. Highly recommended!</p>
+                </div>
+                <div class="review-item">
+                    <img src="images/sara.jpeg" alt="Review 3">
+                    <h3>Sara Ndanu</h3>
+                    <p>Fantastic selection and excellent prices.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="contact-info">
+            <p>Contact us: +2547 1234 5678 | info@farmersmarket.com</p>
+        </div>
+        <div class="social-media">
+            <a href="https://facebook.com" target="_blank"><img src="images/facebook.png" alt="Facebook" class="social-icon"></a>
+            <a href="https://tiktok.com" target="_blank"><img src="images/tiktok.png" alt="TikTok" class="social-icon"></a>
+            <a href="https://instagram.com" target="_blank"><img src="images/instagram.png" alt="Instagram" class="social-icon"></a>
+        </div>
+    </footer>
+
+    <script src="/js/scripts.js"></script>
+</body>
+</html>

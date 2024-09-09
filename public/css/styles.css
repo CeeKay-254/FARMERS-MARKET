@@ -1,0 +1,310 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5e0;
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    background-color: #2e5339;
+    color: white;
+    padding: 15px 0;
+    font-family: 'Centaur', serif; /* Set the font to Centaur */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul .logo, nav ul .right {
+    display: flex;
+    align-items: center;
+}
+
+nav ul .logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+nav ul .logo span {
+    font-size: 24px;
+    color: white;
+}
+
+nav ul .right a {
+    margin-left: 10px;
+}
+
+nav ul .right img.icon {
+    height: 24px;
+    width: 24px;
+    vertical-align: middle;
+}
+
+nav ul .dropdown {
+    position: relative;
+}
+
+nav ul .dropdown-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 24px;
+    color: white;
+}
+
+nav ul .dropdown-btn .icon-bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px auto;
+}
+
+nav ul .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #4a7c59;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    min-width: 180px;
+    top: 100%;
+    left: 0;
+}
+
+nav ul .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+nav ul .dropdown-content a:hover {
+    background-color: #3d6d4b;
+}
+
+/* Show categories when dropdown is clicked */
+nav ul .dropdown.active .dropdown-content {
+    display: block;
+}
+
+/* Intro Section with Background Image */
+#intro {
+    background-image: url('images/market2.jpeg'); /* Ensure the path is correct */
+    background-size: cover;
+    background-position: center; /* Adjust if needed */
+    color: white;
+    text-align: center;
+    padding: 120px 20px;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.5); /* Darker overlay for better text visibility */
+}
+
+#intro .intro-content {
+    position: relative;
+    z-index: 1;
+    animation: float-in 1.2s ease-in-out;
+}
+
+#intro h1 {
+    font-weight: bold; 
+    font-size: 3rem; 
+    color: white;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+#intro p {
+    color: white;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes float-in {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.log-in {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.log-in a {
+    background-color: #2e5339;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Add transition for smooth hover effect */
+}
+
+.log-in a:hover {
+    background-color: #1e3d24;
+}
+
+/* Offers Section */
+#offers {
+    margin: 40px auto;
+    background-color: #e4dfd4;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 1200px; /* Center the content and constrain width */
+}
+
+#offers h2 {
+    text-align: center;
+    color: #2e5339;
+    margin-bottom: 20px;
+}
+
+.offer-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; /* Spacing between items */
+}
+
+.offer-item {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    flex: 1 1 calc(33.333% - 20px); /* 3 items per row with spacing */
+    box-sizing: border-box;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.offer-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Defined Image Sizes */
+.offer-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.view-more {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.view-more a {
+    background-color: #2e5339;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Add transition for smooth hover effect */
+}
+
+.view-more a:hover {
+    background-color: #1e3d24;
+}
+
+/* Reviews Section */
+#reviews {
+    margin: 40px auto;
+    background-color: #e4dfd4;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 1200px; /* Center the content and constrain width */
+}
+
+#reviews h2 {
+    text-align: center;
+    color: #2e5339;
+    margin-bottom: 20px;
+}
+
+.review-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; /* Spacing between items */
+}
+
+.review-item {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    flex: 1 1 calc(33.333% - 20px); /* 3 items per row with spacing */
+    box-sizing: border-box;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.review-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Defined Image Sizes */
+.review-item img {
+    width: 80%;
+    height: auto;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #2e5339;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.contact-info {
+    margin-bottom: 10px;
+}
+
+.social-media {
+    margin-top: 10px;
+}
+
+.social-icon {
+    height: 24px;
+    width: 24px;
+    margin: 0 5px;
+    vertical-align: middle;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .offer-item, .review-item {
+        flex: 1 1 calc(50% - 20px); /* Two items per row on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .offer-item, .review-item {
+        flex: 1 1 100%; /* One item per row on very small screens */
+    }
+}

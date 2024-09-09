@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('images/market2.jpeg');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .container h2 {
+            margin-bottom: 20px;
+        }
+        .container input, .container select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .container button {
+            background-color: #2e5339;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .container button:hover {
+            background-color: #1e3d24;
+        }
+        .google-btn {
+            background-color: #4285f4;
+            margin-top: 10px;
+        }
+        .toggle-link {
+            color: #2e5339;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .message {
+            color: green;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 id="formTitle">Login</h2>
+        <form id="userForm" action="/login" method="post">
+            <input type="email" name="email" id="email" placeholder="Email" required>
+            <input type="password" name="password" id="password" placeholder="Password (min 8 characters)" minlength="8" required>
+            <button type="submit">Login</button>
+            <button type="button" class="google-btn">Login with Google</button>
+            <p>Don't have an account? <span class="toggle-link" onclick="toggleForm()">Register</span></p>
+        </form>
+        <p id="message" class="message"></p>
+    </div>
+
+    <script>
+        function toggleForm() {
+            const form = document.getElementById('userForm');
+            const title = document.getElementById('formTitle');
+            const message = document.getElementById('message');
+            message.textContent = ''; // Clear any message when toggling
+
+            if (form.action.endsWith('/login')) {
+                form.action = '/register';
+                title.textContent = 'Register';
+                form.innerHTML = `
+                    <input type="text" name="username" id="username" placeholder="Username" required>
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                    <input type="password" name="password" id="password" placeholder="Password (min 8 characters)" minlength="8" required>
+                    <select name="role" id="role" required>
+                        <option value="" disabled selected>Select Role</option>
+                        <option value="buyer">Buyer</option>
+                        <option value="farmer">Farmer</option>
+                    </select>
+                    <button type="submit">Register</button>
+                    <button type="button" class="google-btn">Register with Google</button>
+                    <p>Already have an account? <span class="toggle-link" onclick="toggleForm()">Login</span></p>
+                `;
+            } else {
+                form.action = '/login';
+                title.textContent = 'Login';
+                form.innerHTML = `
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                    <input type="password" name="password" id="password" placeholder="Password (min 8 characters)" minlength="8" required>
+                    <button type="submit">Login</button>
+                    <button type="button" class="google-btn">Login with Google</button>
+                    <p>Don't have an account? <span class="toggle-link" onclick="toggleForm()">Register</span></p>
+                `;
+            }
+        }
+
+        // Handle form submission
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('userForm');
+            const message = document.getElementById('message');
+
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        message.textContent = form.action.endsWith('/login') ? 'Login successful!' : 'Registration successful!';
+                        if (form.action.endsWith('/login')) {
+                            localStorage.setItem('token', result.token); // Store JWT token
+                            window.location.href = '/dashboard'; // Redirect to user dashboard
+                        } else {
+                            toggleForm(); // Switch to login form after registration
+                        }
+                    } else {
+                        const errorText = await response.text();
+                        message.textContent = `Error: ${errorText}`;
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    message.textContent = 'An error occurred. Please try again.';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
